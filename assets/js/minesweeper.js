@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     )
       return;
     if (square.classList.contains("kaboom")) {
-      console.log("Game over");
+      gameOver(square);
     } else {
       let totalBombs = square.getAttribute("data");
       if (totalBombs != 0) {
@@ -156,4 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }, 10);
   }
+
+  // When the game is over
 });
