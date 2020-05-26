@@ -37,6 +37,32 @@ document.addEventListener("DOMContentLoaded", () => {
           squares[i + 1 - width].classList.contains("kaboom")
         )
           total++;
+        if (i > 10 && squares[i - width].classList.contains("kaboom")) total++;
+        if (
+          i > 11 &&
+          !leftBorder &&
+          squares[i - 1 - width].classList.contains("kaboom")
+        )
+          total++;
+        if (
+          i < 98 &&
+          !rightBorder &&
+          squares[i + 1].classList.contains("kaboom")
+        )
+          total++;
+        if (
+          i < 90 &&
+          !leftBorder &&
+          squares[i - 1 + width].classList.contains("kaboom")
+        )
+          total++;
+        if (
+          i < 88 &&
+          !rightBorder &&
+          squares[i + 1 + width].classList.contains("kaboom")
+        )
+          total++;
+        if (i < 89 && squares[i + width].classList.contains("kaboom")) total++;
         squares[i].setAttribute("data", total);
         console.log(squares[i]);
       }
