@@ -78,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Clicking on a square at the start of the game
   function click(square) {
+    let currentBlock = square.id;
+
     if (gameIsOver) return;
     if (
       square.classList.contains("checked") ||
@@ -93,7 +95,65 @@ document.addEventListener("DOMContentLoaded", () => {
         square.innerHTML = totalBombs;
         return;
       }
-      square.classList.add("checked");
+      cleanSquare(square, currentBlock);
     }
+    square.classList.add("checked");
+  }
+
+  // Clear blocks with zero bombs around them, once a square is clicked.
+  function cleanSquare(square, currentBlock) {
+    const leftBorder = currentBlock % width === 0;
+    const rightBorder = currentBlock % width === width - 1;
+
+    setTimeout(() => {
+      if (currentBlock > 0 && !leftBorder) {
+        const newId = squares[parseInt(currentBlock) - 1].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+      if (currentBlock > 9 && !rightBorder) {
+        const newId = squares[parseInt(currentBlock) + 1 - width].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+      if (currentBlock > 10) {
+        const newId = squares[parseInt(currentBlock - width)].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+      if (currentBlock > 11 && !leftBorder) {
+        const newId = squares[parseInt(currentBlock) - 1 - width].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+      if (currentBlock < 98 && !rightBorder) {
+        const newId = squares[parseInt(currentBlock) + 1].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+      if (currentBlock < 90 && !leftBorder) {
+        const newId = squares[parseInt(currentBlock) - 1 + width].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+      if (currentBlock < 88 && !rightBorder) {
+        const newId = squares[parseInt(currentBlock) + 1 + width].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+      if (currentBlock < 89) {
+        const newId = squares[parseInt(currentBlock) + width].id;
+        const newSquare = document.getElementById(newId);
+
+        click(newSquare);
+      }
+    }, 10);
   }
 });
