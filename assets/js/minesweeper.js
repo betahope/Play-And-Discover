@@ -21,6 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
       square.classList.add(randomGrid[i]);
       grid.appendChild(square);
       squares.push(square);
+
+      // Listen to a click
+      square.addEventListener("click", function (e) {
+        click(square);
+      });
     }
     // Adding the numbers to the cleared blocks
     for (let i = 0; i < squares.length; i++) {
@@ -69,4 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   createTheBoard();
+
+  // Clicking on a square at the start of the game
+  function click(square) {
+    if (square.classList.contains("kaboom")) {
+      alert("Game over");
+    }
+  }
 });
