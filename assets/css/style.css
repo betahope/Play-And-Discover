@@ -5,6 +5,8 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+/* Minesweeper */
+
 .ms-grid {
   height: 25rem;
   width: 25rem;
@@ -16,4 +18,8 @@ body {
 .ms-grid div {
   height: 2.5rem;
   width: 2.5rem;
+}
+
+.kaboom {
+  background-color: orangered;
 }

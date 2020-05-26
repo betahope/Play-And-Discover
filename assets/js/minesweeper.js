@@ -15,13 +15,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const randomGrid = playingGrid.sort(() => Math.random() - 0.5);
 
-    let i;
-    for (i = 0; i < width * width; i++) {
+    for (let i = 0; i < width * width; i++) {
       const square = document.createElement("div");
       square.setAttribute("id", i);
       square.classList.add(randomGrid[i]);
       grid.appendChild(square);
       squares.push(square);
+    }
+    // Adding the numbers to the cleared blocks
+    for (let i = 0; i < squares.length; i++) {
+      let total = 0;
+      const leftBorder = i % width === 0;
+      const rightBorder = i % width === width - 1;
+
+      if (squares[i].classList.contains("clear")) {
+        if (i > 0 && !leftBorder && squares[i - 1].classList.contains("kaboom"))
+          total++;
+        if (
+          i > 9 &&
+          !rightBorder &&
+          squares[i + 1 - width].classList.contains("kaboom")
+        )
+          total++;
+        squares[i].setAttribute("data", total);
+        console.log(squares[i]);
+      }
     }
   }
   createTheBoard();
