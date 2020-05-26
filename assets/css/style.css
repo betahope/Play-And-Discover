@@ -20,6 +20,10 @@ body {
   width: 2.5rem;
 }
 
+.checked {
+  background-color: red;
+}
+
 .kaboom {
   background-color: orangered;
 }

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let width = 10;
   let bombers = 20;
   let squares = [];
+  let gameIsOver = false;
 
   // Creating the board
 
@@ -77,8 +78,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Clicking on a square at the start of the game
   function click(square) {
+    if (gameIsOver) return;
+    if (
+      square.classList.contains("checked") ||
+      square.classList.contains("flag")
+    )
+      return;
     if (square.classList.contains("kaboom")) {
-      alert("Game over");
+      console.log("Game over");
+    } else {
+      let totalBombs = square.getAttribute("data");
+      if (totalBombs != 0) {
+        square.classList.add("checked");
+        square.innerHTML = totalBombs;
+        return;
+      }
+      square.classList.add("checked");
     }
   }
 });
