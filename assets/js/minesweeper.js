@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (i = 0; i < width * width; i++) {
       const square = document.createElement("div");
       square.setAttribute("id", i);
+      square.classList.add(randomGrid[i]);
       grid.appendChild(square);
       squares.push(square);
     }
