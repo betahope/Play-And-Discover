@@ -10,8 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Putting the random bombs inside the grid
     const bombsLocation = Array(bombers).fill("kaboom");
     const clearLocation = Array(width * width - bombers).fill("clear");
-    console.log(bombsLocation);
-    console.log(clearLocation);
+
+    const playingGrid = clearLocation.concat(bombsLocation);
+
+    const randomGrid = playingGrid.sort(() => Math.random() - 0.5);
 
     let i;
     for (i = 0; i < width * width; i++) {
