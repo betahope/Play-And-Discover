@@ -158,4 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // When the game is over
+  function gameOver(square) {
+    console.log("Kaboom! This game is over!");
+    gameIsOver = true;
+
+    // Show all the bombs once the game is over
+    squares.forEach((square) => {
+      if (square.classList.contains("kaboom")) {
+        square.innerHTML = "💣";
+      }
+    });
+  }
 });
