@@ -7,23 +7,69 @@ body {
 
 /* Minesweeper */
 
-.ms-grid {
-  height: 25rem;
-  width: 25rem;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: grey;
+.container {
+  width: 500px;
+  align-content: center;
 }
 
-.ms-grid div {
-  height: 2.5rem;
-  width: 2.5rem;
+.grid {
+  height: 420px;
+  width: 420px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #dcd6bc;
+  margin-left: 50px;
+  margin-top: 20px;
+  border: 10px solid #dcd6bc;
+  margin-bottom: 10px;
+}
+
+div {
+  font-size: 25px;
+  text-align: center;
+}
+.valid {
+  height: 40px;
+  width: 40px;
+  border: 5px solid;
+  border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
+  box-sizing: border-box;
 }
 
 .checked {
-  background-color: red;
+  height: 40px;
+  width: 40px;
+  border: 2px solid;
+  background-color: #cecab7;
+  border-color: #9c998d;
+  box-sizing: border-box;
 }
 
-.kaboom {
-  background-color: orangered;
+.bomb {
+  height: 40px;
+  width: 40px;
+  border: 5px solid;
+  border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
+  box-sizing: border-box;
+}
+
+.one {
+  color: #e76346;
+}
+
+.two {
+  color: #4199d3;
+}
+
+.three {
+  color: #57da59;
+}
+
+.four {
+  color: #bb41d3;
+}
+
+#result {
+  margin-top: 5px;
+  color: #e76346;
 }
