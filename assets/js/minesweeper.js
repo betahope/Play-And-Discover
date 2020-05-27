@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".ms-grid");
   let width = 10;
   let bombers = 20;
+  let flags = 0;
   let squares = [];
   let gameIsOver = false;
 
@@ -75,6 +76,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   createTheBoard();
+
+  // Adding the flags to the bombs when right clicking above them
+
+  function flagBomb(square) {
+    if (gameIsOver) return;
+    if (!square.classList.contains("clear") && flags < bombers) {
+      if (!square.classList.contains("flag")) {
+        square.classList.add("flag");
+        square.innerHTML = "⛳";
+        flags++;
+      } else {
+        square.classList.remove("flag");
+        square.innerHTML = "";
+        flags--;
+      }
+    }
+  }
 
   // Clicking on a square at the start of the game
   function click(square) {
