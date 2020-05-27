@@ -28,8 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
       square.addEventListener("click", function (e) {
         click(square);
       });
+
+      // Control and left click
+      square.oncontextmenu = function (e) {
+        e.preventDefault();
+        flagBomb(square);
+      };
     }
-    // Adding the numbers to the cleared blocks
+    // Adding the numbers to the cleared blocks with bombs around
     for (let i = 0; i < squares.length; i++) {
       let total = 0;
       const leftBorder = i % width === 0;
